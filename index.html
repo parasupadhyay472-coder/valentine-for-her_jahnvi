@@ -1,177 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>For Jahnvi 💖</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>For Jahnvi 💖</title>
 
-<style>
-body{
-  margin:0;
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:linear-gradient(135deg,#ff758c,#ff7eb3);
-  font-family:Segoe UI,sans-serif;
-  overflow:hidden;
-}
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
-.card{
-  background:white;
-  padding:35px;
-  border-radius:22px;
-  text-align:center;
-  box-shadow:0 25px 50px rgba(0,0,0,0.3);
-  max-width:90%;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
 
-h1{color:#ff4d6d;}
-p{font-size:18px;}
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-.buttons{
-  position:relative;
-  height:70px;
-  margin-top:25px;
-}
+    .card {
+      background: white;
+      padding: 35px 30px;
+      border-radius: 22px;
+      width: 340px;
+      text-align: center;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+      animation: pop 0.6s ease;
+    }
 
-button{
-  padding:14px 34px;
-  font-size:18px;
-  border:none;
-  border-radius:30px;
-  cursor:pointer;
-}
+    @keyframes pop {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
 
-#yes{
-  background:#ff4d6d;
-  color:white;
-}
+    h2 {
+      color: #ff4d6d;
+      margin-bottom: 12px;
+    }
 
-#no{
-  background:#adb5bd;
-  position:absolute;
-  left:130px;
-}
+    p {
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
 
-.heart{
-  font-size:30px;
-  animation:pulse 0.6s infinite alternate;
-}
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
 
-@keyframes pulse{
-  from{transform:scale(1)}
-  to{transform:scale(1.3)}
-}
+    button {
+      padding: 12px 24px;
+      border: none;
+      border-radius: 30px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
 
-.tap{
-  font-size:14px;
-  opacity:0.6;
-  margin-top:10px;
-}
-</style>
+    #yesBtn {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    #yesBtn:hover {
+      transform: scale(1.08);
+    }
+
+    #noBtn {
+      background: #ddd;
+      position: relative;
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="card" id="card">
-  <h1>Hey Jahnvi 💖</h1>
-  <p>
-    I have a small question…<br>
-    but before that,<br>
-    I just want you to know —
-  </p>
-  <p><b>You have the most beautiful smile ✨</b></p>
+  <div class="card" id="card">
+    <h2>Jahnvi 💖</h2>
+    <p id="message">Will you be my Valentine? 🌹</p>
 
-  <h2>Will you be my Valentine? 🌹</h2>
-
-  <div class="buttons">
-    <button id="yes">YES 💘</button>
-    <button id="no">NO 😒</button>
+    <div class="buttons">
+      <button id="yesBtn">YES 💘</button>
+      <button id="noBtn">NO 😒</button>
+    </div>
   </div>
 
-  <div class="tap">👉 tap anywhere first</div>
-</div>
+  <script>
+    let step = 0;
 
-<audio id="music">
-  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_9f7a9fdc87.mp3">
-</audio>
+    const messages = [
+      "Will you be my Valentine? 🌹",
+      "Are you sure? 😢<br><br>Your smile makes my worst days feel lighter ✨",
+      "Last chance 😤<br><br>The way you talk, the way you care… everything feels better with you 💕"
+    ];
 
-<script>
-const noBtn = document.getElementById("no");
-const yesBtn = document.getElementById("yes");
-const card = document.getElementById("card");
-const music = document.getElementById("music");
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const message = document.getElementById("message");
+    const card = document.getElementById("card");
 
-let step = 0;
-let started = false;
+    noBtn.addEventListener("click", () => {
+      if (step < 2) {
+        step++;
+        message.innerHTML = messages[step];
+      } else {
+        noBtn.style.position = "absolute";
+        noBtn.style.left = Math.random() * 70 + "%";
+        noBtn.style.top = Math.random() * 70 + "%";
+      }
+    });
 
-document.body.addEventListener("click", ()=>{
-  if(!started){
-    music.play();
-    started = true;
-  }
-});
-
-noBtn.addEventListener("mouseover", ()=>{
-  noBtn.style.left = Math.random()*220 + "px";
-});
-
-yesBtn.addEventListener("click", ()=>{
-  step++;
-
-  if(step === 1){
-    card.innerHTML = `
-      <h1>Wait 😳</h1>
-      <p>
-        Before you decide…<br><br>
-        Jahnvi, the way you talk,<br>
-        the way you care,<br>
-        it honestly makes everything better 💫
-      </p>
-      <h2>Still YES? 👀</h2>
-      <button id="yes">YES 💖</button>
-    `;
-  }
-
-  else if(step === 2){
-    card.innerHTML = `
-      <h1>One more thing 🥺</h1>
-      <p>
-        You are not just beautiful…<br>
-        you are calm, kind,<br>
-        and weird in the cutest way 😌💗
-      </p>
-      <h2>Sure about it? 😏</h2>
-      <button id="yes">YES 💞</button>
-    `;
-  }
-
-  else{
-    card.innerHTML = `
-      <h1>I knew it 😍</h1>
-      <p>
-        Jahnvi,<br><br>
-        you make normal days special,<br>
-        smiles real,<br>
-        and hearts feel full ❤️
-      </p>
-      <p>
-        This Valentine’s Day is ours ✨<br>
-        and honestly…<br>
-        <b>I wouldn’t want it with anyone else.</b>
-      </p>
-      <div class="heart">💖💞💖</div>
-    `;
-  }
-
-  // reattach YES button event after innerHTML change
-  const newYes = document.getElementById("yes");
-  if(newYes){
-    newYes.addEventListener("click", arguments.callee);
-  }
-});
-</script>
+    yesBtn.addEventListener("click", () => {
+      card.innerHTML = `
+        <h2>💖 I KNEW IT 💖</h2>
+        <p>
+          Happy Valentine’s Day Jahnvi ❤️<br><br>
+          You’re my favorite person,<br>
+          my favorite smile,<br>
+          and my favorite forever 😍
+        </p>
+      `;
+    });
+  </script>
 
 </body>
 </html>
