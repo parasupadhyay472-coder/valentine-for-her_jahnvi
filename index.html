@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For Jahnvi 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+      max-width: 90%;
+    }
+
+    h1 {
+      color: #ff4d6d;
+      margin-bottom: 15px;
+      font-size: 28px;
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      position: relative;
+      height: 60px;
+    }
+
+    button {
+      padding: 14px 36px;
+      font-size: 18px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    #yesBtn {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    #yesBtn:hover {
+      transform: scale(1.1);
+    }
+
+    #noBtn {
+      background: #adb5bd;
+      color: black;
+      position: absolute;
+    }
+
+    .love {
+      font-size: 32px;
+      margin-top: 20px;
+      animation: pop 0.6s ease-in-out infinite alternate;
+    }
+
+    @keyframes pop {
+      from { transform: scale(1); }
+      to { transform: scale(1.25); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card" id="card">
+    <h1>Jahnvi 💖</h1>
+    <p>Will you be my Valentine? 🌹</p>
+
+    <div class="buttons">
+      <button id="yesBtn">YES 💘</button>
+      <button id="noBtn">NO 😒</button>
+    </div>
+  </div>
+
+  <!-- Background Music -->
+  <audio id="song">
+    <source src="https://files.catbox.moe/4k6q1x.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const card = document.getElementById("card");
+    const song = document.getElementById("song");
+
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.random() * (window.innerWidth - 120);
+      const y = Math.random() * (window.innerHeight - 120);
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    });
+
+    yesBtn.addEventListener("click", () => {
+      song.play();
+
+      card.innerHTML = `
+        <h1>I knew it 😍</h1>
+        <p>Happy Valentine’s Day, Jahnvi 💖</p>
+        <p>You are absolutely perfect ✨</p>
+        <div class="love">💞💖💞</div>
+      `;
+    });
+  </script>
+
+</body>
+</html>
